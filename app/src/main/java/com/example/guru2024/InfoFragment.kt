@@ -1,6 +1,7 @@
 package com.example.guru2024
 
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
@@ -70,7 +71,7 @@ class InfoFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private fun getCurrentUserId(): String {
         // SharedPreferences에서 저장된 userId를 가져오기
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", 0)
-        return sharedPreferences.getString("userId", "") ?: ""
+        return sharedPreferences.getString("mId", "") ?: ""
     }
 
     private fun logout(userId: String) {

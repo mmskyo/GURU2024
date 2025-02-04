@@ -1,5 +1,6 @@
 package com.example.guru2024
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -25,4 +26,6 @@ class IntroActivity : AppCompatActivity() {
             finish()
         }, 2000)
     }
+
+
 }

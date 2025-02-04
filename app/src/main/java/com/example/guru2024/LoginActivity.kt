@@ -1,5 +1,6 @@
 package com.example.guru2024
 
+import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
@@ -41,10 +42,15 @@ class LoginActivity : AppCompatActivity() {
 
             if (cursor.moveToFirst()) {
                 Toast.makeText(this, "환영합니다!", Toast.LENGTH_SHORT).show()
+                // 아이디를 SharedPreferences에 저장
+                val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString("mId", id) // 아이디 저장
+                editor.apply()
 
                 // 화면 전환
                 val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("ID", id) // 사용자 ID를 전달
+                // intent.putExtra("ID", id) // 사용자 ID를 전달
                 startActivity(intent)
                 finish()
             } else { Toast.makeText(this, "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show() }

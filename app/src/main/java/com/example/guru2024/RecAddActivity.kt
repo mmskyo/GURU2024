@@ -16,7 +16,6 @@ class RecAddActivity : AppCompatActivity() {
         binding = ActivityRecAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val receivedNo = intent.getIntExtra("NO", 1)
         val receivedTime = intent.getStringExtra("TIME")
         val receivedCategory = intent.getStringExtra("CATEGORY")
         val receivedLocation = intent.getStringExtra("LOCATION")
@@ -39,7 +38,7 @@ class RecAddActivity : AppCompatActivity() {
             val setCat = binding.textCatSet.text.toString()
             val setLoc = binding.textLocSet.text.toString()
             val setCon = binding.textContent.text.toString()
-            val setId = intent.getStringExtra("ID") // 사용자 아이디 전달
+            val setId = intent.getStringExtra("mId")
 
             val insertQuery = "INSERT INTO recTBL (mId, rTime, rLoc, rCat, rContent) VALUES (?, ?, ?, ?, ?)"
             val stmt = db.compileStatement(insertQuery)
