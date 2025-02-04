@@ -5,21 +5,17 @@
     android:id="@+id/recAdd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="30dp"
-    android:layout_marginBottom="50dp"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
     tools:context=".RecAddActivity">
 
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:background="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
     <TextView
@@ -29,7 +25,7 @@
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintEnd_toStartOf="@+id/btnSave"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="53dp"
         android:text="운동 기록하기"
         android:textSize="15dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -38,11 +34,12 @@
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:background="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <View
@@ -53,27 +50,17 @@
         app:layout_constraintTop_toBottomOf="@+id/btnBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp" />
-
-    <TextView
-        android:id="@+id/textNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@id/view"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        android:layout_marginTop="15dp"
-        android:text="1번째 기록"
-        android:textSize="15dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"/>
 
     <TextView
         android:id="@+id/textTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textNum"
+        app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:text="시간 |"
         android:textStyle="bold" />
 
