@@ -34,12 +34,20 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         myHelper = MyDBHelper.getInstance(requireContext())
 
         // 스피너
-        binding.categorySpinner.onItemSelectedListener = this
-        ArrayAdapter.createFromResource(
+        val adapter = ArrayAdapter.createFromResource(
             requireContext(), R.array.categoryArray, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.categorySpinner.adapter = adapter
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.categorySpinner.adapter = adapter
+        binding.categorySpinner.onItemSelectedListener = this
+
+        // SQLite에서 mCat 값 가져와 스피너 기본값으로 설정
+        val savedCategory = getUserCategoryFromDB()
+        savedCategory?.let { category ->
+            val position = adapter.getPosition(category) // 해당 값의 위치 찾기
+            if (position >= 0) {
+                binding.categorySpinner.setSelection(position) // 기본값 설정
+            }
         }
 
         // 종료 버튼 비활성화
@@ -58,7 +66,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         // 종료 버튼 리스너
         binding.btnEnd.setOnClickListener {
 
-            strTime = String.format("%02d:%02d", time / 100, time % 100)
+            strTime = String.format("%02d:%02d", time / 60, time % 60)
             val selectedCategory = binding.categorySpinner.selectedItem.toString()
             // 위치
             // val location = ""
@@ -88,16 +96,16 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         // 타이머 시작
         binding.btnStart.isEnabled = false
-        timerTask = timer(period = 10) {
+        timerTask = timer(period = 1000) {
             time++
-            val sec = time / 100
-            val milli = time % 100
+            val min = time / 60
+            val sec = time % 60
 
             // 프래그먼트가 액티비티에 연결된 상태에서만 실행
             if (isAdded && activity != null) {
                 activity?.runOnUiThread {
-                    binding.tvSec.text = "$sec"
-                    binding.tvMilli.text = "$milli"
+                    binding.tvMin.text = String.format("%02d", min)
+                    binding.tvSec.text = String.format("%02d", sec)
                 }
             } else {
                 // 프래그먼트가 분리된 경우 타이머 종료
@@ -116,8 +124,8 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         // 초기화
         time = 0
         binding.btnStart.isEnabled = true
-        binding.tvSec.text = "0"
-        binding.tvMilli.text = "00"
+        binding.tvMin.text = "00"
+        binding.tvSec.text = "00"
     }
 
     // 뷰 활성화/비활성화 메서드
@@ -140,5 +148,22 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private fun getUserId(): String? {
         val sharedPref = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         return sharedPref.getString("mId", null) // 저장된 userId 가져오기
+    }
+    // 스피너 기본 값
+    private fun getUserCategoryFromDB(): String? {
+        val db = myHelper.readableDatabase
+        var category: String? = null
+
+        // 현재 로그인된 사용자 ID 가져오기
+        val userId = getUserId() ?: return null
+
+        val cursor = db.rawQuery("SELECT mCat FROM memberTBL WHERE mId = ?", arrayOf(userId))
+        if (cursor.moveToFirst()) {
+            category = cursor.getString(0) // 첫 번째 열(mCat) 값 가져오기
+        }
+        cursor.close()
+        db.close()
+
+        return category
     }
 }

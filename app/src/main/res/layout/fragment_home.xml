@@ -20,27 +20,29 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tvSec"
+        android:id="@+id/tvMin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="0"
+        android:layout_marginTop="28dp"
+        android:text="00"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="100dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTimer1" />
 
     <TextView
-        android:id="@+id/tvMilli"
+        android:id="@+id/tvSec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="76dp"
         android:text="00"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSec"
-        app:layout_constraintStart_toEndOf="@+id/tvSec"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="15dp" />
+        android:textSize="100sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvTimer2"
@@ -51,7 +53,7 @@
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tvTimer1"
-        app:layout_constraintTop_toBottomOf="@+id/tvSec"
+        app:layout_constraintTop_toBottomOf="@+id/tvMin"
         android:layout_marginTop="50dp" />
 
     <Button
@@ -111,5 +113,17 @@
         app:layout_constraintStart_toEndOf="@id/btnStart"
         app:layout_constraintTop_toTopOf="@+id/btnStart"
         app:layout_constraintEnd_toEndOf="@id/categorySpinner"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="157dp"
+        android:text=":"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="100sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvSec"
+        app:layout_constraintStart_toEndOf="@+id/tvMin"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
