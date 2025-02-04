@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -72,6 +73,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
             // RecAddActivity로 데이터 전달 후 전환
             val intent = Intent(context, RecAddActivity::class.java).apply {
                 putExtra("ID", getUserId()) // 아이디 전달
+                Log.d("test1234", getUserId().toString())
                 putExtra("TIME", strTime)
                 putExtra("CATEGORY", selectedCategory)
             }
@@ -136,7 +138,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     // 아이디
     private fun getUserId(): String? {
-        val sharedPref = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        return sharedPref.getString("userId", null) // 저장된 userId 가져오기
+        val sharedPref = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        return sharedPref.getString("mId", null) // 저장된 userId 가져오기
     }
 }

@@ -2,6 +2,7 @@ package com.example.guru2024
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.guru2024.databinding.ActivityRecAddBinding
@@ -26,7 +27,8 @@ class RecAddActivity : AppCompatActivity() {
 
         // 뒤로 가기 버튼
         binding.btnBack.setOnClickListener{
-            finish()
+            this@RecAddActivity.finish()
+            Log.d("recAddActivity", "click")
         }
 
         // 저장 버튼
@@ -38,7 +40,9 @@ class RecAddActivity : AppCompatActivity() {
             val setCat = binding.textCatSet.text.toString()
             val setLoc = binding.textLocSet.text.toString()
             val setCon = binding.textContent.text.toString()
-            val setId = intent.getStringExtra("mId")
+            val setId = getSharedPreferences("UserPrefs", 0).getString("mId", "")
+            Log.d("test12345", setId.toString())
+            Log.d("test123456", intent.getStringExtra("mId").toString())
 
             val insertQuery = "INSERT INTO recTBL (mId, rTime, rLoc, rCat, rContent) VALUES (?, ?, ?, ?, ?)"
             val stmt = db.compileStatement(insertQuery)
