@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recAdd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="30dp"
+    android:layout_marginBottom="50dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    tools:context=".RecAddActivity">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <TextView
+        android:id="@+id/tvmyadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintEnd_toStartOf="@+id/btnSave"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="운동 기록하기"
+        android:textSize="15dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <ImageButton
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <View
+        android:id="@+id/view"
+        android:background="@drawable/grey_round"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/textNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        android:layout_marginTop="15dp"
+        android:text="1번째 기록"
+        android:textSize="15dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/textTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textNum"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        android:layout_margin="20dp"
+        android:text="시간 |"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textTime"
+        app:layout_constraintStart_toStartOf="@+id/textTime"
+        android:layout_marginTop="25dp"
+        android:text="운동 |"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textType"
+        app:layout_constraintStart_toStartOf="@+id/textType"
+        android:layout_marginTop="25dp"
+        android:text="장소 |"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/textTimeSet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/textTime"
+        app:layout_constraintBottom_toBottomOf="@+id/textTime"
+        app:layout_constraintStart_toEndOf="@+id/textTime"
+        app:layout_constraintEnd_toEndOf="@id/view"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:hint="운동한 시간을 적어주세요."
+        android:background="#00FFFFFF"/>
+
+    <EditText
+        android:id="@+id/textCatSet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/textType"
+        app:layout_constraintBottom_toBottomOf="@+id/textType"
+        app:layout_constraintStart_toEndOf="@+id/textType"
+        app:layout_constraintEnd_toEndOf="@id/view"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:hint="어떤 운동을 했나요?"
+        android:background="#00FFFFFF"/>
+
+    <EditText
+        android:id="@+id/textLocSet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/textPlace"
+        app:layout_constraintBottom_toBottomOf="@+id/textPlace"
+        app:layout_constraintStart_toEndOf="@+id/textPlace"
+        app:layout_constraintEnd_toEndOf="@id/view"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:hint="운동한 장소를 적어주세요."
+        android:background="#00FFFFFF"/>
+
+    <EditText
+        android:id="@+id/textContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="top"
+        android:hint="오늘 한 운동에 대한 기록을 남겨보세요."
+        app:layout_constraintTop_toBottomOf="@+id/textLocSet"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@id/textPlace"
+        app:layout_constraintEnd_toEndOf="@id/textLocSet"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#00FFFFFF"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

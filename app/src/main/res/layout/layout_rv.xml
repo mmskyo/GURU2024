@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/grey_round">
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="#ffffff"
+        android:padding="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:text="삭제"
+        android:textSize="15dp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/textTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:textStyle="bold"
+        android:text="시간 |" />
+
+    <TextView
+        android:id="@+id/textTimeSet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/textTime"
+        app:layout_constraintBottom_toBottomOf="@id/textTime"
+        app:layout_constraintStart_toEndOf="@id/textTime"
+        android:layout_marginStart="15dp"
+        android:text="0시간 00분 00초" />
+
+    <TextView
+        android:id="@+id/textType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/textTimeSet"
+        app:layout_constraintBottom_toBottomOf="@id/textTimeSet"
+        app:layout_constraintStart_toEndOf="@id/textTimeSet"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:text="운동 |" />
+
+    <TextView
+        android:id="@+id/textCatSet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/textType"
+        app:layout_constraintBottom_toBottomOf="@+id/textType"
+        app:layout_constraintStart_toEndOf="@+id/textType"
+        app:layout_constraintEnd_toEndOf="@+id/btnDelete"
+        android:layout_marginStart="15dp"
+        android:text="테니스" />
+
+    <TextView
+        android:id="@+id/textPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textTime"
+        app:layout_constraintStart_toStartOf="@+id/textTime"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:text="장소 |" />
+
+    <TextView
+        android:id="@+id/textLocSet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/textPlace"
+        app:layout_constraintBottom_toBottomOf="@+id/textPlace"
+        app:layout_constraintStart_toEndOf="@+id/textPlace"
+        app:layout_constraintEnd_toEndOf="@+id/btnDelete"
+        android:layout_marginStart="15dp"
+        android:text="서울 000 센터" />
+
+    <View
+        android:id="@+id/divLine"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#000000"
+        app:layout_constraintStart_toStartOf="@+id/textPlace"
+        app:layout_constraintEnd_toEndOf="@+id/textLocSet"
+        app:layout_constraintTop_toBottomOf="@+id/textPlace"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/divLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/divLine"
+        app:layout_constraintEnd_toEndOf="@id/divLine"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:text="오늘 한 운동 간단하게 기록한 부분\n미리보기" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

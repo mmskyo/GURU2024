@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GURU2024</string>
+    <string-array name="categoryArray">
+        <item>러닝</item>
+        <item>요가</item>
+        <item>테니스</item>
+        <item>사이클</item>
+        <item>기타</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

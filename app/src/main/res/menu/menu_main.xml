@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="운동"
+        android:icon="@drawable/ic_fitness_center_24" />
+
+    <item
+        android:id="@+id/recFragment"
+        android:title="기록"
+        android:icon="@drawable/ic_edit_note_24" />
+
+    <item
+        android:id="@+id/infoFragment"
+        android:title="내 정보"
+        android:icon="@drawable/ic_person_24" />
+
+</menu>
