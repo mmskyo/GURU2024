@@ -1,5 +1,6 @@
 package com.example.guru2024
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
@@ -17,6 +18,8 @@ import kotlin.concurrent.timer
 
 class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     lateinit var binding: FragmentHomeBinding
+    
+    private var locationString: String? = null // 위치
 
     private var time = 0
     private var timerTask: Timer? = null
@@ -55,7 +58,8 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         // 위치 찾기 버튼 리스너
         binding.btnLocation.setOnClickListener {
-            // 지도 되지 않을 경우 xml -> editText
+            val intent = Intent(requireContext(), MapActivity::class.java)
+            startActivityForResult(intent, LOCATION_REQUEST_CODE)
         }
 
         // 시작 버튼 리스너
@@ -68,13 +72,11 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
             strTime = String.format("%02d:%02d", time / 60, time % 60)
             val selectedCategory = binding.categorySpinner.selectedItem.toString()
-            // 위치
-            // val location = ""
             end()
 
             sqlDB = myHelper.writableDatabase
             sqlDB.execSQL( //${locationTextView.text}
-                "INSERT INTO timeTBL VALUES ('${getUserId()}', '$strTime', 'location0', '${binding.categorySpinner.selectedItem}');"
+                "INSERT INTO timeTBL VALUES ('${getUserId()}', '$strTime', '$locationString', '${binding.categorySpinner.selectedItem}');"
             )
             sqlDB.close()
 
@@ -84,6 +86,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 Log.d("test1234", getUserId().toString())
                 putExtra("TIME", strTime)
                 putExtra("CATEGORY", selectedCategory)
+                putExtra("LOCATION", locationString ?: "입력하세요")
             }
             startActivity(intent)
         }
@@ -147,7 +150,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     // 아이디
     private fun getUserId(): String? {
         val sharedPref = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        return sharedPref.getString("mId", null) // 저장된 userId 가져오기
+        return sharedPref.getString("mId", null) // 저장된 mId 가져오기
     }
     // 스피너 기본 값
     private fun getUserCategoryFromDB(): String? {
@@ -165,5 +168,17 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         db.close()
 
         return category
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == LOCATION_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            locationString = data?.getStringExtra("LOCATION") ?: "위치를 선택하지 않음" // locationString 업데이트
+            binding.btnLocation.text = locationString // 버튼에 선택한 위치 표시
+        }
+    }
+
+    companion object {
+        private const val LOCATION_REQUEST_CODE = 1001
     }
 }
